@@ -1,3 +1,5 @@
+__name__='eqSolver'
+
 class eqSolver:
 
     def __init__(self):
@@ -122,3 +124,9 @@ class eqSolver:
                     print(abs(self.sol1[i][self.n]),end='')
                 print('')
         print('')
+
+if __name__=='__main__':
+    eq = eqSolver()
+    eq.get_sys('inp.txt')
+    eq.solve()
+    eq.print_sol()
