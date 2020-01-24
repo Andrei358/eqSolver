@@ -1,2 +1,2 @@
 # eqSolver
-lsolver for linear equations systems
+solver for linear equations systems
