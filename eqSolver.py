@@ -1,6 +1,4 @@
-__name__='eqSolver'
-
-class eqSolver:
+class system:
 
     def __init__(self):
         self.m=0
@@ -13,7 +11,7 @@ class eqSolver:
         self.freev=[]
         self.freez=0
 
-    def get_sys(self, fileName):
+    def getSys(self, fileName):
         with open(fileName) as f:
             inn=f.read().split()
             self.m, self.n = int(inn[0]), int(inn[1])
@@ -26,7 +24,7 @@ class eqSolver:
                 self.b.append(float(inn[k]))
                 k+=1
 
-    def substract(self,i, j, q):
+    def __substract(self,i, j, q):
         multi=-self.a[i][q]/self.a[j][q]
         for col in range(q+1):
             self.a[i][col]=0
@@ -34,33 +32,33 @@ class eqSolver:
             self.a[i][col]+=multi*self.a[j][col]
         self.b[i]+=multi*self.b[j]
 
-    def flip_row(self,i,j):
+    def __flipRow(self,i,j):
         for col in range(self.n):
             self.a[i][col],self.a[j][col]=self.a[j][col],self.a[i][col]
         self.b[i],self.b[j]=self.b[j],self.b[i]
 
-    def first_col(self,i,j):
+    def __firstCol(self,i,j):
         for ii in range(i,self.m):
             if self.a[ii][j]:
                 return ii
         return None
 
-    def first_e(self):
+    def __firstE(self):
         i, j = 0, 0
         self.pivot=[None] * self.m
 
         while i<self.m and j<self.n:
-            tt=self.first_col(i,j)
+            tt=self.__firstCol(i,j)
             if tt!=None:
-                self.flip_row(i,tt)
+                self.__flipRow(i,tt)
                 self.pivot[i]=j
                 for ii in range(i+1,self.m):
-                    self.substract(ii,i,j)
+                    self.__substract(ii,i,j)
                 i+=1
             j+=1
 
     def solve(self):
-        self.first_e()
+        self.__firstE()
         self.freev=[-1]*self.n
         for i in range(self.n):
             self.sol.append([])
@@ -92,7 +90,7 @@ class eqSolver:
                     for k in range(j+1,self.n+1):
                         self.sol1[i][k]+=self.sol[i][j]*self.sol1[j][k]
 
-    def print_sol(self):
+    def printSol(self):
         print('')
         if self.freez:
             print("free variables: ", end='')
@@ -126,7 +124,7 @@ class eqSolver:
         print('')
 
 if __name__=='__main__':
-    eq = eqSolver()
-    eq.get_sys('inp.txt')
+    eq = system()
+    eq.getSys('inp.txt')
     eq.solve()
-    eq.print_sol()
+    eq.printSol()
