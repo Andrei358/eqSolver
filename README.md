@@ -33,4 +33,4 @@ The following is an example of how a system must be represented in the input fil
 
 Actual system | Representation
 --- | --- 
-2x + 3y + 4z = 5 <br /> 3x - 4y = -5 |2 3 <br />  2 3 4 5 <br />  3 4 0 -5
+2x + 3y + 4z = 5 <br /> 3x - 4y = -5 |2 3 <br />  2 3 4 5 <br />  3 -4 0 -5
