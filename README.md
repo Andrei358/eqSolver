@@ -22,7 +22,7 @@ Finding the solution is done using solve()
 ```
 eq.solve()
 ```
-Print the solution to the console afterwards using print()
+Print the solution to the console afterwards using printSol()
 
 ```
 eq.printSol()
