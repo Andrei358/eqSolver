@@ -11,7 +11,7 @@ import eqSolver
 
 eq = system()
 ```
-Input the system using getSys() and passing the name of the file where the system is stored
+Input the system using getSys() and pass the name of the file where the system is stored
 
 ```
 eq.getSys("input.txt")
